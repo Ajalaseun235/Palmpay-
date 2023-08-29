@@ -1,0 +1,250 @@
+
+.table{
+    width:100%;
+    position:fixed;
+    background:rgba(0,0,0,0.06);
+   // transform:translateY(50px);
+    border-radius:5px;
+    bottom:0;
+    padding:5px;
+}
+.table1{
+ 
+    width:100%;
+    position:relative;
+    background:rgba(0,0,0,0.06);
+   // transform:translateY(50px);
+    border-radius:5px;
+   bottom:0;
+    padding:5px;
+}
+.table1 input,
+.table input{
+    width:20%;
+    font-size:large;
+    font-weight:bold;
+    height:40px;
+    border:none;
+margin-bottom:3px;
+    text-align:center;
+    border-radius:10px;
+    background-color:white;
+    
+}
+
+.table button{
+    width:23%;
+    font-size:large;
+    font-weight:bold;
+    height:45px;
+    border:none;
+margin-bottom:3px;
+    text-align:center;
+    border-radius:10px;
+    background-color:white;
+}
+.table1 button{
+    width:30%;
+    font-size:large;
+    font-weight:bold;
+    height:45px;
+    border:none;
+margin-bottom:3px;
+    text-align:center;
+    border-radius:10px;
+    background-color:white;
+}
+.table button i{
+    font-size:large;
+    font-weight:bold;
+}
+input.next{
+    position:absolute;
+    bottom:2px;
+    margin-left:3px;
+   height:130px; 
+   background:#bc99e0;
+   color:white;
+   font-weight:500;
+   font-size:small;
+}
+.receipt{
+   width:92%;
+  padding:10px;
+   border-radius:10px;
+   background:white;
+   display:none;
+     bottom:0%;
+ // transform:translateY(-200px);
+    justify-content:center;
+    align-items:center;
+    position:fixed;
+   z-index:2; 
+   overflow-y:hidden;
+}
+.security{
+    display:block;
+    width:92%;
+  padding:10px;
+   border-radius:10px;
+   background:white;
+   bottom:0px;
+  //transform:translateY(-200px);
+    justify-content:center;
+    align-items:center;
+    position:fixed;
+   z-index:100; 
+   overflow-y:hidden;
+}
+.security nav,
+.receipt nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    gap:10px;
+    margin-bottom:20px;
+}
+.security nav i,
+.receipt nav i{
+    position:absolute;
+    right:5px;
+    font-size:16px;
+    font-weight:550;
+    color:rgba(0,0,0,0.6);
+}
+.security h2,
+.receipt nav h2{
+      font-size:13px;
+    font-weight:500;
+    color:rgba(0,0,0,0.6);
+}
+.detail{
+    padding-bottom:50px;
+}
+.detail .details{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    
+}
+.details h2{
+    color:rgba(0,0,0,0.6);
+}
+ .receipt .pay{
+                position:relative;
+                width:100%;
+                bottom:0;
+                height:60px;
+                color:white;
+              background:#bc99e0;
+                border-radius:10px;
+                border:none;
+               // margin-bottom:10px;
+            }
+
+.edit-details{
+    position:fixed;
+    top:30%;
+    left:5%;
+    z-index:2;
+    background:white;
+    width:80%;
+    padding:10px;
+    justify-content:center;
+    align-items:center;
+    display:none;
+}
+/*.edit-detail{ 
+width:80%;
+height:auto;
+ position:fixed;
+    top:30%;
+    left:5%;
+    z-index:2;
+    background:white;
+    padding:10px;
+    justify-content:center;
+    align-items:center;
+    display:none;
+border-radius:20px;
+}*/
+.edit-details p{
+    color:grey;
+    font-weight:600;
+}
+.edit-details i{
+    position:relative;
+    left:90%;
+    font-size:large;
+    font-weight:510;
+    color:grey;
+}
+.edit-details h2{
+    font-weight:light;
+    font-size:15px;
+    text-align:center;
+}
+.edit-details input{
+    width:100%;
+    text-align:center;
+    height:50px;
+    border:none;
+    outline:none;
+    font-size:15px;
+    margin-bottom:10px;
+}
+.edit-details button{
+    position:relative;
+    justify-content:center;
+    align-items:center;
+    width:80%;
+    left:10%;
+    text-align:center;
+    height:50px;
+    color:white;
+    background:pink;
+    border-radius:10px;
+   border:none;
+    outline:none;
+    margin-bottom:20px;
+}
+.paswrd{
+    position:relative;
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    justify-content:center;
+    align-items:center;
+}
+.paswrd input{
+  // position:absolute;
+   height:40px;
+    gap:10px;
+    width:40px;
+    border:1px solid grey;
+    border-radius:5px;
+    text-align:center;
+    font-size:12px;
+}
+.security h3{
+    font-size:x-small;
+    font-weight:400;
+    color:#bc99e0;
+    text-align:center;
+}
+.secure{
+    display:flex;
+    z-index:100;
+    align-items:center;
+    justify-content:center;
+}
+input[type="checkbox"]{
+    accent-color:black;
+    caret-color:black;
+    border-radius:5px;
+}
+ .table1 .sets:nth-child(4){
+  
+    justify-content:space-between;
+}

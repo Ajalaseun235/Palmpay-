@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <title>palmpay </title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="bank.css" type="text/css"/>
+       <link rel="stylesheet" href="loader.css" type="text/css"/>
+        <script src = "script.js"></script>
+        <style>
+*{
+    color:black;
+    font-size:10px;
+}
+body{
+    max-width:340px;
+ width:340px;  
+ min-height:100vh;
+  background:rgba(0,0,0,0.04);
+}
+      .acct{
+          width:100%; 
+              display:block;
+              background:white;
+              border-radius:20px;
+            }
+            .acct .acct-detail{
+                display:block;
+                width:100%;
+            }
+            .acct-detail input{
+                width:90%;
+                height:40px;
+                margin:10px 10px 10px 10px;
+               border:none;
+             box-shadow:2px 2px 10px 1px rgba(0,0,0,0.04),
+                                     2px 2px 10px 1px rgba(0,0,0,0.04);
+                outline:none;
+                color:black;
+              
+                font-size:15px;
+                font-weight:bold;
+                border-radius:15px;
+                background:transparent;
+            }
+           .acct-detail select{
+                width:93%;
+                height:40px;
+                border:none;
+                font-size:16px;
+             box-shadow:2px 2px 10px 1px rgba(0,0,0,0.04),
+                                     2px 2px 10px  1px rgba(0,0,0,0.04);
+                outline:none;
+                color:black;
+                border-radius:15px;
+                background:transparent;
+                margin:10px 10px 10px 10px;
+            }
+          .acct-detail input::placeholder{
+                font-size:small;
+                font-weight:600;
+                padding-left:20px;
+                color:rgba(0,0,0,0.2);
+            }
+                .acct h2{
+             padding-top:20px;
+              padding-left:20px;
+              font-size:13px;
+            }
+            .acct #next{
+             width:95%;
+             height:50px;
+             color:white;
+             border:none;
+             outline:none;
+             margin:10px 10px 10px 10px;
+             background:#bc99e0;
+             border-radius:20px;   
+             font-size:10px;
+            }
+            
+            footer{
+                display:flex;
+                justify-content:space-around;
+                align-items:center;
+                 position:fixed;
+                 width:100%;
+                 bottom:0;
+                 margin-right:15px;
+                margin-bottom:10px;
+            }
+            footer .tag{
+              display:flex;
+              align-items:center;  
+              gap:5px;
+              
+            }
+            footer i,.foot{
+                color:rgba(0,0,0,0.3);
+            }
+           
+</style>
+    </head>
+    <body>
+        <section id = "load" style = "display:none;"></section>
+         <section id = "roll" style = "display:none;">
+             <div class = "rolls">
+        <div class = "roller">
+    <span style = "--i:0"></span>
+    <span style = "--i:1"></span>
+    <span style = "--i:2"></span>
+      <span style = "--i:3"></span>
+     <span style = "--i:4"></span>
+      <span style = "--i:5"></span>
+    <span style = "--i:6"></span>
+     <span style = "--i:7"></span>
+    <span style = "--i:8"></span>
+      <span style = "--i:9"></span>
+     <span style = "--i:10"></span>
+      </div>
+        </div>
+            </section>
+                <!--confirm form-->
+<div class = "confirm" >
+    <!--top-->
+    <div class = "top" >
+     <h2 style = "font-size:15px;font-weight:400;margin-left:50px;">Information confirmed</h2> 
+      <i class="fa fa-times" id="close" style="font-size:20px; margin-left:40px;color:grey;font-weight:light;"></i>
+     </div>
+         <!--warning-->
+       <div class = "warning" >
+           <p style = "color:purple;"><i class="bx bx-error-alt" style = "color:purple;"></i>Kindly review the transfer details carefully<br>before processing</p>
+       </div>
+    <div class = "mode" style = "display:block;">
+        <div class = "bank">
+            <h1 style = "font-weight:400;">Bank</h1>
+            <h1 class = "bank-name">Opay</h1>
+        </div>
+
+            <div class = "bank">
+            <h1 style = "font-weight:400;">Account Number</h1>
+            <h1 class = "acct-num">9057326602</h1>
+        </div>
+            <div class = "bank">
+            <h1 style = "font-weight:400;">Verified Name</h1>
+            <h1 class = "acct-name"><i class="bx bx-score"></i>John Ajala</h1>
+        </div>
+    </div>
+       <a href = "transfer.html"><button id = "confirm">Confirm</button></a>
+</div>
+        <div class = "header">
+          <i class="fa fa-arrow-left" id="arw" style="color:#bc99e0;"></i>  
+          <h1>Transfer To Bank Account</h1>
+          <i class="fa fa-gift" style="color:#bc99e0;"></i>
+           <i class="fa fa-bars" id="ham" onclick="hams()"></i>
+        </div>
+            <div class = "history">
+            <a href = ""><i class="fa fa-folder">History</i></a>
+                </div>
+                      
+            <article style = "position:fixed; top:50px;">
+            <!--account-->
+        <div class = "acct">
+        <h2>Recipient Account</h2>
+            <div class = "acct-detail">
+        <input type="tel" required = "true" class = "acct-no" maxlength = "10" min = "10" max = "10" minlength="10" name="number" id = "acct-no" placeholder = "Enter 10-digits account number">
+ <select name="items" required = "true" class = "bank" id = "bank">
+  <option value="item1">Select Bank</option>
+  <option value="Opay">Opay</option>
+  <option value="UBA">UBA</option>
+<option value="PalmPay">Palmpay</option>
+  </select>
+     <button id="next"  >Next</button>
+      </div>
+    </div>
+        <!--beneficiary-->
+            <div class = "benefit">
+              <h1>Beneficiaries</h1>  
+              <div class = "benefits">
+                  <img src="images.jpeg" alt="image" width="50" height="auto"></img>
+                  <h2>No Internet Connection</h2>
+                      <p>Please check your network settings or refresh</p>
+              </div>
+             </div>
+                  <script>
+                      //account confirm change
+                      function acctChange(){
+                           let accountNo = document.querySelector(".acct-no").value;
+            let bankName = document.getElementById("bank").value;
+            localStorage.setItem("acctNumber", `${accountNo}`);
+            localStorage.setItem("bankName", `${bankName}`);
+            localStorage.getItem("acctNumber");
+            localStorage.getItem("bankName");
+            
+          /*  let confirmAcct =*/ document.querySelector(".acct-num").innerHTML = accountNo;
+           /* let confirmBank =*/ document.querySelector(".bank-name").innerHTML = bankName;
+            /*confirmAcct =accountNo;
+            confirmBank = bankName;*/
+                      }
+                       let come = ()=>{
+                           setTimeout(()=>{
+                               document.getElementById("roll").style.display = "none";
+                           document.querySelector(".confirm").style.display = "block";
+                       }, 5000);
+                       }
+                        //Next btn
+                        if(navigator.onLine){
+                        document.getElementById("next").onclick = ()=>{
+                            let acctNo = document.getElementById("acct-no");
+                      let selected = document.getElementById("bank").value;
+                      let nextBtn = document.getElementById("next");
+                      if((acctNo.value && selected) == ""){
+                          nextBtn.disabled == 'true';
+                          nextBtn.style.background = "red";
+                         
+                        }
+                        else if(acctNo.value.length != 10){ 
+                        nextBtn.style.background = "red";
+                        acctNo.style.border = "1px solid red" 
+                       
+                         }
+                            else if(isNaN(acctNo.value)){
+                                alert("not a number");
+                            }
+                         else if(document.getElementById("bank").value == 'item1'){  
+                           document.getElementById("load").style.display = "none";
+                           document.getElementById("roll").style.display = "none";
+                      
+                         }
+                        else{
+                            
+                           nextBtn.style.background = "purple";
+                           document.getElementById("load").style.display = "block";
+                           document.getElementById("roll").style.display = "block";
+                           acctChange();
+                              come();
+                        }
+                            
+                        }
+                        }
+                        //history.back
+                  function ham(){
+                          console.log("bars");
+                          document.querySelector(".history").classList.toggle("ad");
+                      }
+                      //confirm close
+                      document.getElementById("close").onclick = ()=>{
+                          document.querySelector(".confirm").style.display = "none";
+                          document.getElementById("load").style.display = "none";
+                          
+                      }
+                      //online
+                     let benefits  = document.querySelector('.benefits');
+                     if(navigator.onLine){
+                        
+                         benefits.innerText = "No beneficiary";
+                     } 
+                     else{
+                       benefits.style.display = "block";  
+                     }
+                     //hamburger
+                     document.getElementById("ham").onclick = function(){
+                         
+                     }
+                     
+                  </script>
+            </div>
+              </article>
+                <footer>
+                    <div class = "tag">
+                        <i class="bx bxs-bolt-circle"></i>
+                         <div id = "transfer" class = "foot"> Fast transfer</div>
+                    </div>
+                        <div class = "tag">
+                        <i class="fa fa-tools"></i>
+                         <div id = "finance" class = "foot">Financial security</div>
+                    </div>
+                        <div class = "tag">
+                        <i class="fa fa-map-pin"></i>
+                         <div id = "rely" class = "foot">Reliable</div>
+                    </div>
+                </footer>
+    </body>
+        <script>
+           
+                          document.getElementById("arw").onclick = ()=>{
+                  history.back();
+              }
+                  document.getElementById('ham').onclick =()=>{
+                        
+                         document.querySelector(".history").classList.toggle("ad");//.style.display="block";
+                      }
+                      </script>
+   </html>

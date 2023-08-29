@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <title>palmpay </title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="styles/style.css" type="text/css"/>
+        <script src = "scripts/script.js"></script>
+        <style>
+*{
+    color:black;
+    font-size:10px;
+}
+body{
+  max-width:360px;  
+  background:rgba(0,0,0,0.04);
+}
+            .footer{
+              position:fixed;
+              background-color:white;
+              bottom:0;
+              color:grey;
+              display:flex;
+              width:100%;
+              padding:5px;
+              flex-direction:row;
+             justify-content:space-around;
+             align-items:center;  
+             z-index:1;
+            }
+            .footer .icon{
+                position:relative;
+                //display:block;
+                color:grey;
+                text-align:center;
+                justify-content:space-between;
+                align-items:center;
+            }
+               .footer .icon:hover .bx:hover, .icon:hover{
+                background:purple;
+            //    color:blue;
+                -webkit-background-clip:text;
+               -webkit-text-fill-color:transparent;
+                  text-align:center;
+               }
+               .footer .icon:hover .abt:hover, .icon:hover{
+                background:purple;
+                //color:blue;
+                -webkit-background-clip:text;
+               -webkit-text-fill-color:transparent;
+                  text-align:center;
+               }
+   
+           .footer.bx, .bx{
+               position:relative;
+               text-align:center;
+               justify-content:center;
+               align-items:center; 
+               font-size:large;
+            }
+            .footer .bx{
+            color:grey;    
+            }
+            .footer .abt{
+                color:grey;
+                text-align:center;
+            }
+            .balance{
+                height:50px;
+              display:flex;
+              background:white;
+              border-radius:50px;
+              align-items:center;
+                justify-content:space-between;
+            }
+            .balance input{
+              border:none;
+              outline:none;
+              width:30%;  
+              font-weight:600;
+              font-size:x-large;
+              margin-left:5px;
+            }
+            .balance-detail{
+              display:flex;
+              margin-left:5px;
+              flex-direction:row;
+              row-gap:5px;
+          //   justify-content:space-between;
+              align-items:center;  
+            }
+            .balance button{
+                position:fixed;
+                right:10px;
+                width:80px;
+                height:35px;
+                color:white;
+                margin-right:5px;
+                background:#5e00d1;
+                border-radius:30px;
+                border:none;
+                
+            }
+            .prof a:hover{
+                width:50px;
+                height:50px;
+                border-radius:50%;
+                background:rgba(0,1,1,0.2);
+            }
+        </style>
+    </head>
+    <body>
+        <div class = "ome" id = "ome">
+        <!--header-->
+        <div class = "header" style = "display:flex; margin:10px;align-items:center; justify-content:space-between;">
+          <div class = "prof" style = "display:flex;">
+             <a href = "profile.html"> <img src='images.jpeg' width = "50px" height = "50px" style = "border-radius:50%; margin-right:10px;"></a>
+          <div class = "details" style = "display:block;">
+              <div class = "detail-name" style = "font-size:large;font-weight:700;"></div>
+             <div class = "detail-mail" style = "color:grey;">@Johnpu4b</div>
+                    </div>
+                  </div>
+                      <div class = "scanner">
+                        <i class="bx bx-scan" style = "margin-right:10px;"></i>
+                        <i class = "bx bx-bell"></i>
+                            </div>
+        </div>
+            <!--balance-->
+                <div class = "balance">
+                    <div class = "balance-detail" style = "display:flex; margin-left:10px;">
+                    <i class="bx bx-rotate-right" id="load" style="color:#5e00e1;" ></i>
+                    <h2 style = "margin-left:5px;">Balance</h2>
+                     <input type="password" readonly = "true" name="pass" id = "amount" value = "10000" step = "10">
+                    <i class="fa fa-eye"style="display:none;" id="show-amt"></i>
+                     <i class="fa fa-eye-slash"  id="hide-amt"></i>
+                        <script>
+                            
+                            window.onload= ()=>{
+                                //account name
+                                document.querySelector(".detail-name").innerText = localStorage.getItem("legalName");
+                                //balance
+                                let fee = document.getElementById("amount").value;
+                                 fee = localStorage.getItem("amtRemain");
+                                localStorage.setItem("fees", `${localStorage.getItem("amtRemain")}`);
+                                localStorage.getItem("fees");
+                            }
+                            //rotator button
+                            let count = 60;
+                            let interval = ()=>   setInterval(function(){
+                             if(count == 1080){
+                           clearInterval(interval());
+                           }
+                           else{
+                                   count++;
+                                document.querySelector("#load").style.transform = `rotate(${count}deg)`;
+                                
+                                }
+                           },0.001);
+                           
+                           //load balance
+                            document.querySelector("#load").onclick = ()=>{
+               
+                               interval();
+                           
+                            }
+                            //decode balance
+                            document.getElementById("hide-amt").onclick = ()=>{
+                                let pswd = document.getElementById("amount");
+                                if(pswd.type == "password"){
+                                    pswd.style.fontSize = 10 + "px";
+                                    pswd.value = "#" + (localStorage.getItem("amtRemain")).toLocaleString() + ".00";
+                                    pswd.type = "text";
+                                    document.getElementById("show-amt").style.display = "block";
+                                    document.getElementById("hide-amt").style.display = "none";
+                                }
+                              
+                            }
+                     
+                                    document.getElementById("show-amt").onclick = ()=>{
+                                              let pswd = document.getElementById("amount");
+                                     if(pswd.type == "text"){
+                                    pswd.type = "password"; 
+                                    pswd.style.fontSize ="x-large";
+                                   pswd.value = "00000"
+                                   document.getElementById("show-amt").style.display = "none";
+                                    document.getElementById("hide-amt").style.display = "block";
+                                }    
+                                    }
+                        </script>
+                </div>
+                    <button class = "fund">Fund</button>
+               </div>
+                   <!--money transfer-->
+                  <div class = "transfer">
+                      <h2>Money Transfer</h2>
+                      <div class = "transfer-links" >
+                          <!--trans && tran-->
+                           <div class = "trans">
+                           <a href = "bank.html">
+        <i class="bx bxs-bank" style="color:#5e00d1;"></i>
+            <div class = "tran" id = "bank">Bank</div></a>
+            </div>
+      <div class = "trans">
+          <a href = "">
+             <i class="bx bxs-user-pin" style="color:#5e00d1;"></i>
+             <div id= "palmpay" class = "tran">To PalmPay</div>
+                 </a>
+          </div>
+               <div class = "trans">
+                   <a href = "">
+             <i class="bx bxs-tag" style="color:#0f76d6"></i>
+             <div id = "payme" class = "tran">Pay Me</div>
+               </a>
+           </div>
+                <div class = "trans">
+                    <a href = "">
+                <i class="bx bxs-card" style="color:green;"></i>
+                 <div id = "payshop" class = "tran" >Pay Shop</div>
+                    </a>
+                    </div>
+                      </div>
+                  </div>
+                      <!--services-->
+                   <div class = "services">
+                       <h2>Services</h2>
+                       <!--serve1-->
+                       <div class = "serve1">
+                           <!--odas && oda-->
+                           <div class = "odas">
+        <i class="bx bxs-trophy" style="color:#5e00d1;"></i>
+            <div class = "oda" id = "win">Win Big</div>
+            </div>
+      <div class = "odas">
+             <i class="fa fa-sort" style="color:green;"></i>
+             <div id= "data" class = "oda">Data Bundle</div>
+          </div>
+               <div class = "odas">
+             <i class="bx bxs-book" style="color:#0f76d6"></i>
+             <div id = "airtime" class = "oda">Airtime</div>
+           </div>
+                <div class = "odas">
+                <i class="bx bxs-buoy" style="color:green;"></i>
+                 <div id = "bet" class = "oda" >Betting</div>
+                </div>
+    </div>
+        <!--serve2-->
+        <div class = "serve2">
+                           <!--odas && oda-->
+                           <div class = "odas">
+        <i class="bx bxs-bolt-circle" style="color:green"></i>
+            <div class = "light" id = "win">Electricity</div>
+            </div>
+      <div class = "odas">
+             <i class="bx bxs-tv" style="color:#0f76d5;"></i>
+             <div id= "tv" class = "oda">TV</div>
+          </div>
+               <div class = "odas">
+             <i class="bx bxs-card" style="color:#5e00d1"></i>
+             <div id = "cowry" class = "oda">Cowry Card</div>
+           </div>
+                <div class = "odas">
+                <i class="bx bxs-file" style="color:deepskyblue;"></i>
+                 <div id = "bet" class = "oda" >Credit</div>
+                </div>
+    </div>
+        <!--serve3-->
+        <div class = "serve3">
+                           <!--odas && oda-->
+                           <div class = "odas">
+        <i class="bx bxs-box" style="color:#5e00d1;"></i>
+            <div class = "oda" id = "refer">Refer & Earn</div>
+            </div>
+      <div class = "odas">
+             <i class="bx bxs-envelope" style="color:#5e00d1;"></i>
+             <div id= "invite" class = "oda">Invitation</div>
+          </div>
+               <div class = "odas">
+             <i class="bx bxs-note" style="color:#5e00d1;"></i>
+             <div id = "bill" class = "oda">Pay Bill</div>
+           </div>
+                <div class = "odas">
+                <i class="bx bxs-planet" style="color:#5e00d1;"></i>
+                 <div id = "internet" class = "oda" >Internet</div>
+                </div>
+    </div>
+        <!--serve4-->
+        <div class = "serve4">
+                           <!--odas && oda-->
+                           <div class = "odas">
+        <i class="bx bx-shower" style="color:#5e00d1;"></i>
+            <div class = "water" id = "win">Water</div>
+            </div>
+      <div class = "odas">
+             <i class="bx bxs-bookmark" style="color:#5e00d1;"></i>
+             <div id= "invoice" class = "oda">Invoice Payment</div>
+          </div>
+               <div class = "odas">
+             <i class="bx bxs-castle" style="color:#5e00d1"></i>
+             <div id = "government" class = "oda">Government Payments</div>
+           </div>
+                <div class = "odas">
+                <i class="bx bxs-church" style="color:green;"></i>
+                 <div id = "religion" class = "oda" >Religious</div>
+                </div>
+    </div>
+  </div>
+ </div>
+<!--footer-->
+        <div class = "footer">
+            <div class = "icon"><a href = "#ome">
+        <i class="bx bxs-home"></i>
+            <div class = "abt" id = "home">Home</div>
+                </a>
+            </div>
+      <div class = "icon">
+             <i class="bx bx-money"></i>
+             <div id= "finance" class = "abt">Finance</div>
+          </div>
+               <div class = "icon">
+             <i class="bx bxs-gift"></i>
+             <div id = "reward" class = "abt">Reward</div>
+           </div>
+                <div class = "icon">
+                <i class="bx bxs-user" id="mes"></i>
+                 <div id = "me" class = "abt">Me</div>
+                </div >
+                   </div> 
+        <script>
+        
+        </script>
+    </body>
+ </html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <title>palmpay </title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="oader.css" type="text/css"/>
+      <link rel="stylesheet" href="transfer.css" type="text/css"/>
+      <!--   <link rel="stylesheet" href="styles/profile.css" type="text/css"/>-->
+        <script src = "script.js"></script>
+        <style>
+*{
+    color:black;
+    font-size:10px;
+    //margin:0;
+// padding:0;
+}
+body{
+    max-width:330px;
+ width:330px;  
+ min-height:100vh;
+ display:block;
+ 
+  background:rgba(0,0,0,0.05);
+  justify-content:center;
+  align-items:center;
+  overflow-x:hidden;
+}
+.bank-logo{
+    width:100%;
+  //  top:100px;
+    position:relative;
+    transform:translateY(50px);
+    display:block;
+//text-align:center;
+    justify-content:center;
+    align-items:center;
+}
+.bank-logo h3{
+    
+    font-weight:500;
+    font-size:x-small;
+    color:grey;
+    text-align:center;
+}
+.bank-logo h1{
+    
+    font-weight:700;
+    font-size:large;
+    color:black;
+    text-align:center;
+}
+.bank-logo img{
+    width:60px;
+    position:relative;
+    height:60px;
+    border-radius:50%;
+    left:40%;
+   
+}
+.nav{
+    display:flex;
+    position:fixed;
+    width:100%;
+    background-color:white;
+    top:0;
+    align-items:center;
+z-index:1;
+height:50px;
+}
+.nav i{
+   font-size:15px;
+   font-weight:700;
+   margin-right:10px; 
+   margin-left:5px; 
+}
+.nav h1{
+   font-size:14px;
+   font-weight:500;
+  
+}
+.amt-send{
+    width:100%;
+    position:relative;
+    transform:translateY(50px);
+    display:block;
+text-align:center;
+padding:10px;
+    justify-content:center;
+    align-items:center;
+    background:white;
+    border-top-right-radius:20px;
+    border-top-left-radius:20px;
+}
+.amt-send h1{
+    font-weight:500;
+    font-size:10px;
+    margin-top:10px;
+    padding-bottom:50px;
+}
+.amt-send .line{
+    width:90%;
+    margin-left:5%;
+   border-bottom:1px solid rgba(0,0,0,0.1);
+}
+.amt-send input{
+     width:90%;
+    margin-left:1%;
+    height:50px;
+    font-size:35px;
+    font-weight:400;
+    border:none;
+    outline:none;
+    letter-spacing:2px;
+    text-align:center;
+}
+.edit{
+   width:150px;
+   height:50px;
+   border:none;
+   background:rgba(0,0,0,0.1);
+   color:grey; 
+   font-size:11px;
+   font-weight:500;
+   border-radius:10px;
+   //margin-top:50px;
+    margin-bottom:50px;
+}
+</style>
+    </head>
+  <body>
+      <div class = "nav">
+          <i class="fa fa-arrow-left" id="arw" style="color:#bc99e0; font-size:15px;"></i>  
+          <h1>Transfer To Bank Account</h1>
+       </div>
+           <!--loader-->
+           <section id = "load" style = "display:none;"></section>
+         <section id = "roll" style = "display:none;">
+             <div class = "rolls">
+        <div class = "roller">
+    <span style = "--i:0"></span>
+    <span style = "--i:1"></span>
+    <span style = "--i:2"></span>
+      <span style = "--i:3"></span>
+     <span style = "--i:4"></span>
+      <span style = "--i:5"></span>
+    <span style = "--i:6"></span>
+     <span style = "--i:7"></span>
+    <span style = "--i:8"></span>
+      <span style = "--i:9"></span>
+     <span style = "--i:10"></span>
+      </div>
+        </div>
+            </section>
+                <div class = "edit-details">
+             <i class="fa fa-times" onclick="cloe()"></i>
+              <h2 id = "what">Add a note</h2>
+                <input type = "text" id = "edit-acct" placeholder = "Add a note">
+              <button id = "confirm">Confirm</button>
+             </div>
+                
+      <div class="bank-logo" style = "display:block;">
+          
+          <img src="images.jpeg"  id="bank-img"><i class="fa fa-paypal"></i></img>
+          <h1 id="acctName">TO JOHN AJALA</h1>
+              <h3 id = "palmName">PalmPay(9057326602)</h3>
+   
+       </div>
+           <div class = "amt-send" style = "display:block;">
+               <h1>Amount (#)</h1>
+                 <input size  = "2" type = "tel" placeholder = "#10.00 - #5,000,000.00" id = "transfer-amt">
+                  <div class = "line"></div> 
+                  <h3 class = "availBal" style = "color:rgba(0,0,0,0.5); font-size:10px;"></h3>
+                   <button class = "edit" ><i class="fa fa-edit" style="color:grey;"></i>Add a note</button>
+          
+    </div>
+             <div class = "table" style = "display:block;">
+  <div class = "set">
+    <button class = "button">1</button>
+    <button class = "button">2</button>
+    <button class = "button">3</button>
+    <input type = "submit" class = "delete" id = "delete" onclick = "del()" value = "&times;">
+  </div>
+  <div class = "set">
+    <button class = "button">4</button>
+    <button class = "button">5</button>
+    <button class = "button">6</button>
+  </div>
+      <div class = "set">
+    <button class = "button">7</button>
+    <button class = "button">8</button>
+    <button class = "button">9</button>
+  </div>
+          <div class = "set">
+    <button class = "button">00</button>
+    <button class = "button">0</button>
+    <button class = "button">.</button>
+    <input type="submit" class = "next" value = "Next">
+  </div>
+</div>   
+<!--receipt-->
+    <div class = "receipt">
+        <nav>
+            <h2>Payment</h2>
+            <i class="fa fa-times" onclick="cloze()"></i>
+        </nav>
+            <div class = "detail">
+            <div class = "details">
+                <h2>Account Number</h2>
+               <h3>9057326602</h3>
+            </div>
+                <div class = "details">
+                <h2> Name</h2>
+               <h3 id = "name">John Ajala</h3>
+            </div>
+                <div class = "details">
+                <h2>Amount</h2>
+               <h3 id = "amount"></h3>
+            </div>
+                <div class = "details">
+                <h2 style = "display:flex;align-items:center;">Fee<i class="bx bx-error-alt" style='margin-left:2px;'></i></h2>
+               <h3 id = "fee-amt"></h3>
+            </div>
+         </div>
+        <button class = "pay"></button>
+    </div>
+        <!--security-->
+            <div class = "security" style = "display:none;">
+             <nav>
+            <h2>Input Pin to Pay</h2>
+            <i class="fa fa-times" onclick="cloze()"></i>
+        </nav>
+            <h2 class = "h2-amt" style = "text-align:center;">#1000</h2>
+                <div class = "paswrd inputfield">
+                    <input class = "input" type="password" maxlength = "1"  name="pass">
+                    <input class = "input" type="password" name="pass" maxlength = "1">
+                     <input class = "input" type="password" name="pass" maxlength = "1">
+                     <input class = "input" type="password" name="pass" maxlength = "1">
+                     <i class="fa fa-eye" onclick="show()" id="eye"></i>
+                </div>
+                    <h3>Forgot PIN?</h3>
+                       <div class = "secure">
+                    <input type="checkbox" name="check" checked = "true">
+                     <span>Secure input mode is active</span>
+                         </div>
+            <!--</div>-->
+                <div class = "table1" style = "display:none;">
+                    
+                 <div class = "sets">
+    <button class = "btn">1</button>
+    <button class = "btn">2</button>
+    <button class = "btn">3</button>
+  </div>
+  <div class = "sets">
+    <button class = "btn">4</button>
+    <button class = "btn">5</button>
+    <button class = "btn">6</button>
+  </div>
+      <div class = "sets">
+    <button class = "btn">7</button>
+    <button class = "btn">8</button>
+    <button class = "btn">9</button>
+  </div>
+          <div class = "sets">
+  
+    <button class = "btn">0</button>
+    <button onclick = "del()" class = "btn">&otimes;</button>
+    
+  </div>
+</div>   
+</div>
+  </body>
+      <script>
+        //decode password
+             function show(){
+          let inp = document.querySelectorAll(".paswrd input");
+          inp.forEach(input=>{
+           
+              if(input.type == "password"){
+                   input.type = "text"; 
+                  
+          }
+          else{
+              input.type = "password";  
+          }
+          
+          })
+          }
+          //accont header
+          //available amount
+          document.querySelector('.availBal').innerHTML = "Available balance:" + "#" + localStorage.getItem("fees") + ".00";
+              //palmname 
+          document.getElementById("palmName").innerHTML = localStorage.getItem("bankName") + "(" + localStorage.getItem("acctNumber") + ")";
+          
+        //  update fee
+        document.getElementById("fee-amt").innerHTML = "#" +  localStorage.getItem("fees") + ".00";
+      
+          //Number button1
+          document.querySelectorAll("set, .button").forEach((e)=>{
+              e.preventDefault;
+                 setTimeout(()=>{
+                document.getElementById("transfer-amt").value = "#";
+                },1000);
+            e.addEventListener("click", function(){     
+            //clear add note value  
+         if(e.innerText == "Add a note"){
+document.querySelector(".edit-details").style.display = "block"; 
+            document.getElementById("transfer-amt").value = "";
+            }
+            //confirm
+            else if(e.innerText == "Confirm"){
+            document.querySelector(".edit-details").style.display = "block"; 
+            document.getElementById("transfer-amt").value = "";
+         }
+    
+         else{
+                   document.getElementById("transfer-amt").value += e.innerHTML;
+     }
+            })
+       
+          })
+          
+     //pay me
+         document.querySelector(".pay").onclick = ()=>{
+            console.log("hoop");
+            document.getElementById("load").style.display = "block";
+          document.getElementById("roll").style.display = "block";
+          come();
+            //no pay display
+           // document.querySelector(".pay").style.display = "none";
+          //  document.querySelector(".table").style.display = "none";
+          //table1, security display block
+          let amtRemaining =  localStorage.getItem("fees") - document.getElementById("transfer-amt").value;
+          localStorage.setItem("amtRemain", amtRemaining);
+          localStorage.getItem("amtRemain");
+            document.querySelector(".table1").style.display = "block";
+              document.querySelector(".security").style.display="block";
+              localStorage.setItem("sendPrice", `${document.getElementById("transfer-amt").value}`);
+              localStorage.getItem("sendPrice");
+                document.querySelector(".h2-amt").innerHTML = '#' + document.getElementById("transfer-amt").value + ".00";
+         }
+         
+     //input acctpin
+     const inp = document.querySelectorAll(".btn");
+     inp.forEach((e)=>{
+        e.addEventListener("click",(e)=>{
+         document.querySelector(".inputfield input").value += e.innerHTML;   
+        }) 
+     })
+     const input = document.querySelectorAll(".input");
+const inputField = document.querySelector(".inputfield");
+let inputCount = 0,
+  finalInput = "";
+//Update input
+const updateInputConfig = (element, disabledStatus) => {
+  element.disabled = disabledStatus;
+  if (!disabledStatus) {
+    element.focus();
+  } else {
+    element.blur();
+  }
+};
+input.forEach((element) => {
+  element.addEventListener("keyup", (e) => {
+    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+    let { value } = e.target;
+    
+    if (value.length == 1) {
+      updateInputConfig(e.target, true);
+      if (inputCount <= 3 && e.key != "Backspace") {
+        finalInput += value;
+        if (inputCount < 3) {
+          updateInputConfig(e.target.nextElementSibling, false);
+        }
+      }
+      inputCount += 1;
+    } else if (value.length == 0 && e.key == "Backspace") {
+      finalInput = finalInput.substring(0, finalInput.length - 1);
+      if (inputCount == 0) {
+        updateInputConfig(e.target, false);
+        return false;
+      }
+      updateInputConfig(e.target, true);
+      e.target.previousElementSibling.value = "";
+      updateInputConfig(e.target.previousElementSibling, false);
+      inputCount -= 1;
+    } else if (value.length > 1) {
+      e.target.value = value.split("")[0];
+    }
+    
+  });
+});
+window.addEventListener("keyup", (e) => {
+  if (inputCount > 3) {
+      if(input.value == localStorage.getItem("pin")){
+        alert("wrong pin");
+    }
+      document.getElementById("load").style.display = "block";
+          document.getElementById("roll").style.display = "block";
+          come();
+    open("success.html");
+}
+    if (e.key == "Backspace") {
+      finalInput = finalInput.substring(0, finalInput.length - 1);
+      updateInputConfig(inputField.lastElementChild, false);
+      inputField.lastElementChild.value = "";
+      inputCount -= 1;
+     
+    }
+ // }
+});
+
+//Start
+/*const startInput = () => {
+  inputCount = 0;
+  finalInput = "";
+  input.forEach((element) => {
+    element.value = "";
+  });
+  updateInputConfig(inputField.firstElementChild, false);
+};
+window.onload = startInput*/
+
+          //add a note
+          document.getElementById("confirm").onclick = ()=>{
+                    if(document.querySelector("input").value == ""){
+                        alert("null");
+                        document.getElementById("confirm").disabled = true;
+                        document.getElementById("confirm").disabled = false;
+                        
+                    }
+            
+                    else{
+                         
+                    document.querySelector(".edit").innerHTML = document.querySelector("input").value;
+                      cloe();
+                       
+                    }
+                }
+    //close confirm edit
+          function cloe(){
+          document.querySelector('#load').style.display ="none";
+          
+         document.querySelector(".edit-details").style.display = "none";
+    
+         document.querySelector("input").value = "";
+     }
+          //receipt function
+          let come = ()=>{
+                           setTimeout(()=>{
+                               document.getElementById("load").style.display = "none";
+               document.getElementById("roll").style.display = "none"; 
+                               //document.querySelector(".table").style.display = "none";
+                           document.querySelector(".receipt").style.display = "block";
+                       }, 5000);
+                       }
+          //next
+          document.querySelector(".next").onclick = ()=>{
+              let output = document.getElementById("transfer-amt");
+                output.value =  output.value.substr(1, output.value.length -1);
+let amountInput = Number(output.value);
+
+            if(document.getElementById("transfer-amt").value == ""){
+               document.getElementById("load").style.display = "none";
+               document.getElementById("roll").style.display = "none"; 
+            }
+            else if(document.getElementById("transfer-amt").value == "#"){
+               document.getElementById("load").style.display = "none";
+               document.getElementById("roll").style.display = "none"; 
+               
+            }
+              
+  else  if(amountInput < 10 || amountInput >5000000){
+        console.log("less thaan 10");
+    }
+           
+              else{
+                  
+                  document.querySelector(".next").style.background = "#5e00d1";
+         document.getElementById("load").style.display = "block";
+          document.getElementById("roll").style.display = "block";
+          come();
+          let amount = document.getElementById("transfer-amt").value;
+           document.getElementById("amount").innerHTML = '#' + amount + ".00";
+        document.querySelector(".pay").innerHTML ="Pay" + " "+ amount + ".00";
+           
+     }
+     }
+
+     //close receipt
+     function cloze(){
+         document.querySelector(".receipt").style.display = "none";
+         
+              document.querySelector(".security").style.display="none";
+     }
+          //delete btn
+          function del(){
+            let output = document.getElementById("transfer-amt");
+                output.value =  output.value.substr(0,output.value.length - 1);
+            } 
+            //back arrow
+           document.getElementById("arw").onclick = ()=>{
+                  history.back();
+              }
+      </script>
+      </html>
+    

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <title>palmpay </title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="loader.css" type="text/css"/>
+      <!--   <link rel="stylesheet" href="styles/profile.css" type="text/css"/>-->
+        <script src = "script.js"></script>
+        <style>
+            body{
+                max-width:360px;
+                overflow-x:hidden;
+                scroll-behavior:smooth;
+              padding:10px;
+              min-height:100vh;
+            }
+            a {
+                text-decoration:none;
+                font-size:x-small;
+                 font-weight:400;
+                 line-height:2;
+                color:#5e00d1;
+                position:relative;
+            
+                top:-10px;
+                float:right;
+            }
+            .head-detail h1{
+                font-size:large;
+            }
+              .head-detail p{
+                  font-size:small;
+                  color:grey;
+              }
+                .head-detail h2{
+                 color:#5e00d1;   
+                }
+                .article{
+                    position:relative;
+                 overflow-x:hidden;
+                width:100%;
+                height:100%;
+                    transform:translateY(50px);
+                }
+            .success-head{
+               /*:position:relative;
+               top:0%;
+               left:0%;*/
+               margin-top:20px;
+               text-align:center;
+               justify-content:center;
+               align-items:center;
+               display:block; 
+               
+            }
+             .success-head img{
+                 border-radius:50%;
+                 align-items:center;
+               justify-content:center;
+                 transform:translateX(25px);
+             }
+            .success-detail{
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                
+            }
+               .success-detail h2{
+                 font-size:x-small;
+                 font-weight:400;
+                 line-height:2;
+                 color:grey;
+                 //width:500px;
+                 }
+                    .success-detail span{
+                        font-size:small;
+                 font-weight:500;
+                 color:rgba(0,0,0,0.7);
+              
+                    }
+            .btns{
+                
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                position:relative;
+               bottom:0%;
+            transform:translateY(470%);
+            }
+            .btns button{
+                width:45%;
+                padding:10px;
+                height:60%;
+                border:none;
+                border-radius:7px;
+            }
+            button:nth-child(2){
+                background:#5e00d1;
+                color:white;
+            }
+            #session{
+               // position:relative;
+                width:190px;
+                word-wrap:break-word;
+            }
+            button:nth-child(1){
+                //background:#5e00d1;
+                color:#5e00d1;
+            }
+            section{
+                margin-top:40px;
+            }
+        </style>
+            </head>
+     <body>
+
+         <a href = "#">Receipt</a>
+      
+         <div class = "success-head">
+             
+             <div class = "image">
+         <img src="good.jpg" alt="image" width="50" height="auto">
+            </div>
+                <div class = "head-detail">
+                 <h1>SUCCESSFUL</h1>
+              <p>Your transfer is successful</p>
+              <h2 id = "amt">#10.00</h2>
+                  </div>
+                      </div>
+                          <section>
+                  <div class = "success-detail">
+             <h2>Recipient</h2>
+             <span id = "palmName">JOHN AJALA (9057326602)</span>
+                 </div>
+                 <div class = "success-detail">
+             <h2>Payment Method</h2>
+             <span>Balance</span>
+                 </div>
+                     <div class = "success-detail">
+             <h2>Session ID <p style = "margin-top:-10px;">From receiving bank</p></h2>
+             <span id = "session">1233300990488874748665579964363</span>
+                 </div>
+                </section>
+                     <div class = "btns">
+                         
+               <button>Complete</button>
+                <button>Send Again</button>
+                    </div>
+                     
+     </body>
+         <script>
+             
+             //palm name
+             document.getElementById("palmName").innerHTML = localStorage.getItem("bankName") + "(" + localStorage.getItem("acctNumber") + ")";
+            //get amount sent
+             document.getElementById("amt").innerHTML = "#" + localStorage.getItem("sendPrice") + ".00";
+         </script>
+         </html>

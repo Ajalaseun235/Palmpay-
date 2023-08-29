@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <title> </title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <script src = "script.js"></script>
+        <style>
+            *{
+    color:rgba(0,0,0,0.6);
+    font-size:10px;
+    accent-color:var(--main-color);
+}
+:root{
+    --main-color:#5e00d1;
+    --sec-color:#bc99e0;
+}
+body{
+    max-width:340px;
+ width:340px;  
+ min-height:100vh;
+  background:rgba(0,0,0,0.04);
+}
+            .header{
+             display:flex;
+             justify-content:space-between;
+             align-items:center;   
+             font-size:15px;
+            }
+            .header span{
+                font-size:15px;
+            }
+            .header i,.header .log{
+               color:var(--main-color); 
+            }
+            .left i{
+                margin-right:10px;
+                font-size:15px;
+            }
+            select{
+            border:none;
+            outline:none; 
+            height:90%;   
+            background:transparent;
+            border-bottom:1px solid rgba(0,0,0,0.2);
+            }
+            form{
+                padding:10px;
+            }
+            .signs{
+              justify-content:center;
+              align-items:center;  
+              margin-left:10px;
+              height:50px;
+              width:100%;
+              
+            }
+            #tel{
+              border:none;
+               outline:none;
+               //background:rgba(0,0,0,0.04);
+                height:95%; 
+                width:75%;  
+                font-size:16px;
+                background:transparent;
+                border-bottom:1px solid rgba(0,0,0,0.2);
+            }
+            input[type="search"]{
+                position:relative;
+                border:none;
+                outline:none;
+                width:100%;
+                border-bottom:1px solid rgba(0,0,0,0.2);
+                height:40px;
+                font-size:large;
+                background:transparent;
+            }
+          input[type="tel"]{
+                width:100%;
+                border:none;
+                outline:none;
+                height:100%;
+            font-size:large;
+            background:transparent;
+            }
+            input[type="date"]{
+               position:relative;
+                 border:1px solid rgba(0,0,0,0.2);
+                width:100%;
+                height:40px; 
+                background:transparent;
+            }
+            .inputs{
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+            .input{
+                display:flex;
+               justify-content:center;
+            }
+              .input input[type="number"],
+                input[type="password"]{
+                   position:relative;
+                   width:17%;
+                   height:70px;
+                   border-radius:5px;
+                  font-size:large;
+                  
+                  margin-right:10px;
+                  text-align:center;
+                   flex-direction:column;
+                   justify-content:center;
+               }
+            p{
+                text-align:center;
+                font-size:12px;
+            }
+            p span{
+              color:var(--main-color);  
+              font-size:12px;
+            }
+          .first{
+                position:relative;
+            }
+            img{
+                border-radius:50%;
+                width:30px;
+                height:30px;
+            }
+              .verification{
+                  position:relative;
+                  height:50px;
+               //   justify-content:space-between;
+                  align-items:center;
+                  display:flex;
+                  padding:5px;
+                  border-bottom:1px solid rgba(0,0,0,0.3);
+              }
+              .receive{
+               //  margin-right:5px; 
+                 //gap:20px;
+                height:60%;
+                 display:flex;
+                 border:none;
+               outline:none;
+                 align-items:center;
+              }
+              .receive span{
+                margin-right:15px;  
+              }
+           .receive, #error{
+              position:absolute;  
+              right:0;
+             // top:0;
+             font-size:large;
+            text-align:center;
+              
+            }
+            #error{
+                bottom:6px;
+            }
+            .receive i{
+               // position:absolute;
+                //right:50px;
+                font-size:15px;
+            }
+            .male,
+            .female,
+            .gender{
+                display:flex;
+               justify-content:space-between;
+                align-items:center;
+            }
+            .male span,
+            .female span{
+                font-size:15px;
+            }
+            button.sign{
+               width:100%;
+               height:50px; 
+               border:none;
+               outline:none;
+               color:white;
+               background:var(--sec-color);
+               border-radius:10px;
+            }
+           input::placeholder{
+               color:rgba(0,0,0,0.5);
+               font-size:small;
+           }
+           .invitation{
+               position:relative;
+               width:100%;
+               height:auto;
+           }
+           .invite{
+              position:absolute;
+              bottom:0; 
+              color:red;
+              z-index:2;
+              opacity:0;
+           }
+         
+   #surname:focus::placeholder,
+        #fname:focus::placeholder,
+        input:focus::placeholder{
+               opacity:1;
+               color:rgba(0,0,0,0.4);
+           }
+           #surname::placeholder,
+           #fname::placeholder{
+              // display:none;
+              opacity:0;
+           }
+           #next{
+              justify-content:center;
+              align-items:center; 
+           }
+        </style>
+            </head>
+   <body>
+       <div class = "header">
+           <div class = "left">
+              <i class='fa fa-arrow-left'></i> 
+              <span>Sign up</span>
+           </div>
+               <span class='log'>Login</span>
+       </div>
+           <form action = "index.html" >
+          <!-- <div class='sign'>-->
+               <div class = "signs">
+                  
+             <select name="country" required>
+                   <img src = "nig.png"></img>
+  <option value="nigeria">+234</option>
+  <option value="ghana"><img src = "ghana.png">+233</option>
+    
+  </select>
+      <input type="tel" required placeholder = "Mobile Number" maxlength = "10" id = "tel" class = "num">
+          </div><br>
+              <div class = "verification">
+            <input type="tel" required maxlength = "4" max = "4" name="number" placeholder="Verification code">
+                 <button class = "receive">
+               <i class="bx bxs-comment-dots"></i>
+                   <span>Send SMS</span>
+                       </button>
+           </div><br>
+               
+                 <div class = "first con" id = "con">
+               <span id = "first">Legal First Name</span>
+               <input type="search" id = "fname" required name="text_input" placeholder = "Legal First Name">
+                   <span class = "bx bx-error-circle" id = "error"></span>
+                   
+                      </div><br>
+                          
+                        <div class = "surname con"id = "con">     
+                <span id = "Surname">Legal Surname</span>
+               <input type="search"  required name="text_input" id = "surname" placeholder = "Legal Surname">
+                   
+                       </div><br>
+                           
+                       <div class = "gender" >
+                           <div class = "male" >
+                     <img src="male.jpg" alt="image"></img>
+                   <span>Male</span>
+                    <input type="radio" name="radio">
+                </div>
+                      <div class = "female" >
+               <img src="female.jpg" alt="image" ></img>
+              <span>Female</span>
+                    <input type="radio" name="radio">
+                        </div>
+                            <br>
+                   </div><br>
+                    <input type="date" required placeholder = "Date of birth" name="date">
+                        <br></br>
+                        <div class = "invitation con" id = "con">
+                    <span class = "invite">Invitation code (optional)</span>
+                    <input type="search" name="text_input" placeholder = "Invitation code (optional)" id = "invite">
+                        </div><br>
+                    <button class = "sign">Sign Up</button>
+                   <p>Click "Sign up" to accept</p>
+                   <p><span>Terms and Conditions</span> & <span>Privacy Policy</span></p>
+<p><span><i class="fa fa-cookie"></i>Customer Service</span></p>
+              </form>
+                  <form>
+                      <p>Enter a 4-digits PIN for your palmpay account</p>
+                          <div class = "inputs">
+                              <div class = "input">
+                          <input type="number" maxlength = "1" name="number"  id = "forst" class = "pin">
+                            <input type="number" maxlength = "1" name="number"  id = "sec" class = "pin" disabled>
+                               <input type="number" maxlength = "1" name="number"  id = "third" class = "pin" disabled >
+                                 <input type="number" maxlength = "1" name="number"  id = "fort" class = "pin" disabled >
+                                  <input type="number" maxlength = "1" name="number"  id = "last" class = "pin" disabled hidden>
+                                 </div>
+                               <i class="fa fa-eye" onclick="eye()" style="font-size:large;" id="eye"></i>
+                              </div>
+                                 <p>PIN requirement</p>
+                                 <ol>
+                                   <li>No repeatable numbers(e.g 1111)</li>
+                                    <li>No continuous numbers (e.g 1234, 4321)</li>  
+                                 </ol>
+                                    <button id = "next">Next</button>
+                  </form>
+   </body>
+       <script>
+       
+                   function eye(){
+          let inp = document.querySelectorAll(".input input");
+          inp.forEach(input=>{
+           
+              if(input.type == "number"){
+                   input.type = "password"; 
+                  
+          }
+          else{
+              input.type = "number";  
+          }
+          
+          })
+          }
+          
+           let pin = document.querySelector(".input");
+           let pinInput = document.querySelectorAll(".pin");
+           pinInput.forEach(input=>{
+       
+               input.addEventListener("keyup", (e)=>{
+                   
+                   //input box Number
+                   if(input.value.length == 1){
+                       input.nextElementSibling.disabled = false;
+                       input.nextElementSibling.focus();
+                       
+                       
+                   
+                   }
+                  else if(e.value == 1111){
+                      alert("3");
+                  }
+                   //delete numbers
+                   if(e.key == "Backspace"){
+                       input.previousElementSibling.disabled = false;
+                       input.previousElementSibling.focus();
+                  //    alert("back"); 
+                      
+                   }
+                   
+               })
+           })
+           //next
+           document.getElementById("next").onclick = ()=>{
+               let forst = document.getElementById("forst");
+               let sec = document.getElementById("sec");
+               let third = document.getElementById("third");
+               let fort = document.getElementById("fort");
+            //   let first = document.getElementById("first");
+            
+                  localStorage.setItem("pin", `${forst.value} ${sec.value} ${third.value} ${fort.value}`);
+                  localStorage.getItem("pin")
+                   }
+                   
+           document.querySelector(".sign").onclick = ()=>{
+           let fname = document.querySelector("#fname");
+           let tel = document.querySelector("#tel");
+           let sname = document.querySelector("#surname");
+           //full name
+           localStorage.setItem("myName", `${fname.value}  ${sname.value}`);
+           localStorage.getItem("myName");
+           //legal first name
+           localStorage.setItem("legalName", `${fname.value}`);
+           localStorage.getItem("legalName");
+           //my mobile
+           localStorage.setItem("myNum", `${tel.value}`);
+           localStorage.getItem("myNum");
+           }
+         //input focus
+           document.querySelectorAll("input[type='search']").forEach(e=>{
+               e.addEventListener("focus", (e)=>{
+                   document.getElementById("error").style.display ='none';
+                document.querySelectorAll('.con').forEach(con =>{
+                       con.addEventListener("click", co=>{
+                           con.firstElementChild.style.color ='var(--main-color)';
+                           })
+                           })
+                             })
+                         
+           })
+       </script>
+       </html>

@@ -1,0 +1,82 @@
+.transfer{
+    display:block;
+    background-color:white;
+    border-radius:20px;
+    height:100px;
+    width:100%;
+    align-items:center;
+}
+.transfer .transfer-links{
+   display:flex;
+   justify-content:space-around;
+  align-items:center;
+   width:100%; 
+}
+  .transfer .tran{
+                text-align:center;
+            }
+   .transfer .trans{
+                position:relative;
+                display:block;
+                color:grey;
+                text-align:center;
+                justify-content:space-between;
+            }
+            .transfer .bx{
+                font-size:x-large;
+            }
+            .transfer h2{
+             //margin-left:30px;  
+              padding-left:20px;
+            }
+            .trans a {
+             text-decoration:none;   
+            }
+            
+            .services{
+    display:block;
+    background-color:white;
+    border-radius:20px;
+   // height:100px;
+    width:100%;
+    align-items:center;
+}
+.services .serve1,.serve2,
+.serve3,.serve4{
+   display:flex;
+   justify-content:space-around;
+  align-items:center;
+   width:100%; 
+   margin-top:25px;
+}
+.serve4{
+    padding-bottom:20px;
+    
+}
+ .oda{
+                text-align:center;
+            }
+  .odas{
+                position:relative;
+                display:block;
+                color:grey;
+                width:100px;
+                text-align:center;
+                justify-content:space-between;
+            }
+         .odas .bx{
+                font-size:x-large;
+            }
+             .services h2{
+             margin-left:20px;  
+              padding-top:10px;
+            }
+.active{
+   color:brown; 
+}
+.icon a{
+   text-decoration:none; 
+}
+.icon:active{
+    color:blue;
+}

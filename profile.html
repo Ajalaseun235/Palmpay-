@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <title>palmpay </title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="profile.css" type="text/css"/>
+            <link rel="stylesheet" href="loader.css" type="text/css"/>
+        <script src = "script.js"></script>
+        <style>
+*{
+    color:black;
+    font-size:10px;
+}
+body{
+  max-width:330px;  
+  background:rgba(0,0,0,0.04);
+}
+header{
+    background:white;
+    position:fixed;
+    top:0;
+    z-index:1;
+    width:100%;
+    height:50px;
+}
+.prof{
+  position:relative;  
+  top:50px;
+  background:white;
+  border-radius:20px;
+  width:100%;
+  display:block;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:15px;
+}
+.prof-img i{
+    position:relative;
+    right:25px;
+    color:rgba(1,1,1,1);
+border:3px solid rgba(0,0,0,0.05);
+}
+.prof-img img{
+    position:relative;
+    border-radius:50%;
+    width:70px;
+    height:70px;
+}
+.prof h2{
+    font-weight:400;
+    color:rgba(0,0,0,0.5);
+}
+.prof span{
+    font-weight:600;
+}
+.acct-scan{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+</style>
+</head>
+   <body>
+       <section class = "load" id = "load" style = "display:none;"></section>
+         <section id = "roll" style = "display:none;">
+             <div class = "rolls">
+        <div class = "roller">
+    <span style = "--i:0"></span>
+    <span style = "--i:1"></span>
+    <span style = "--i:2"></span>
+      <span style = "--i:3"></span>
+     <span style = "--i:4"></span>
+      <span style = "--i:5"></span>
+    <span style = "--i:6"></span>
+     <span style = "--i:7"></span>
+    <span style = "--i:8"></span>
+      <span style = "--i:9"></span>
+     <span style = "--i:10"></span>
+      </div>
+        </div>
+            </section>
+         <section id = "load" style = "display:none;"></section>
+         <div class = "edit-details">
+             <i class="fa fa-times" onclick="cloze()"></i>
+              <h2 id = "what">Edit email address</h2>
+                <input type = "text" id = "edit-acct" placeholder = "Email Address">
+              <button id = "confirm">Confirm</button>
+             </div>
+                 <div class = "edit-detail">
+             <i class="fa fa-times" onclick="cloze()"></i>
+              <h2 id = "what">Edit your palmpay tag</h2>
+                <input type = "text" id = "edit-tag" placeholder = "palmpay tag">
+              <p>If you change your unique PalmPay Tag, you will not be able to change it for another 6 months. Do not use punctuation marks or special character.</p>
+              <button id = "confirmed">Confirm</button>
+             </div>
+       <!--header-->
+       <header style = "display:flex;gap:20px;align-items:center;">
+           <i class="fa fa-arrow-left" id='arw' style ="font-size:15px;color:#bc99e0; margin-left:10px;"></i>
+           <h2 style = "font-size:15px; font-weight:500;">My Profile</h2>
+       </header>
+           <!--profile-img-->
+               <div class = "prof">
+                  <div class = "prof-img">
+                      <input type="file" hidden = "true" name="text_input" id = "imageFile" accept = "image/*">
+                   <img src="images.jpeg" alt="image" id = "profile-img"></img>
+                   <i class="fa fa-camera"></i>
+                       </div>
+                       <span>Hi,</span>
+                           <span>John</span>
+                     <h2>@johnpu4b</h2>
+                         <hr></hr>
+                        <div class = "acct-scan">
+                            <!--palmpay account number-->
+                            <div class = "palmPayNum">
+                                <h1>PalmPay Account Number</h1>
+                                <h2 style = "font-weight:bold; color:black;" id = "num">9057326602 <i class='fa fa-copy' onclick = "copy()" style='color:rgba(0,0,0,0.5); font-size:small;margin-left:20px;'></i></h2>
+                            </div>
+                                <div class = "palmPayQr">
+                                <h1>PalmPay Qr Code</h1>
+                               <i class='fa fa-print' style='color:rgba(0,0,0,0.5);font-size:large;'></i>
+                            </div>
+                        </div>
+               </div>
+               <div class = "detail">
+            <div class = "details">
+                <h2>Nickname</h2>
+               <div class = "edit-nick">
+               <h3>John</h3>
+                <i class="fa fa-edit"></i>
+                    </div>
+            </div>
+                <div class = "details">
+                <h2> Full Name</h2>
+                 <div class = "edit-nick">
+               <h3 id = "name"></h3>
+               <i class="fa fa-edit"></i>
+                   </div>
+            </div>
+                <div class = "details">
+                    <div class = "unique" style = "">
+                <h2>Palmpay tag</h2>
+                    <!--<span>Use unique tag to find your friends</span>-->
+                 </div>
+                <div class = "edit-nick">
+               <h3 id = "palmpaytag">@johnpu4b</h3>
+              <i class="fa fa-edit"></i>
+                  </div>
+            </div>
+                <div class = "detailz" id = "details">
+                <h2 >Mobile Number</h2>
+                    <div class = "edit-nick">
+               <h3 id = "mobile"></h3>
+                
+                     </div>
+            </div>
+                <div class = "details">
+                <h2 >Email Address</h2>
+                    <div class = "edit-nick">
+               <h3 id = "mail"></h3>
+                  <i class="fa fa-edit"></i>
+                     </div>
+            </div>
+         </div>
+             <article>
+                 <div class = "topnav">
+                 <div class = "nav">
+                 <i class="fa fa-arrow-left" onclick="cloze()" ></i>
+                <div class = "top">
+                  <i class="fa fa-star"></i>
+                 <i class="fa fa-bars"></i>
+                </div>
+                    </div>
+                    <h1>Edit your name</h1>
+                    </div>
+                      <div class = "editFname">
+                          <h2>Legal First Name</h2>
+                         <input type="text" name="text_input" id = "LFN" required = "true">
+                           <br></br>
+                      <input type="text" placeholder = "middle name(optional)" style = "margin-top:10px;" name="text_input" id = "LSN"> 
+                      
+                       <h2>Legal Surname</h2>
+                         <input type="text" name="text_input" id = "LSN" required = "true"> 
+                     <button id = "submitFname">Submit</button>
+                       </div>
+                          
+             </article>
+   </body>
+       <script>
+           localStorage.setItem("imgUR", `images.jpeg`);
+               localStorage.getItem("imgUR");
+               //window onload
+           window.onload = ()=>{
+               document.getElementById("name").innerText = localStorage.getItem("myName");
+               document.getElementById("mobile").innerText = localStorage.getItem("myNum");
+               const img  = profileImg.querySelector("img");
+               img.src = localStorage.getItem("imgUR");
+           }
+           //upload image
+           const profileImg = document.querySelector(".prof-img"),
+            imgBox = profileImg.querySelector("img"),
+            fileInput = profileImg.querySelector("input");
+            
+            const upload = (e) =>{
+              const file = e.target.files[0];
+               if(!file) return;
+               imgBox.src = URL.createObjectURL(file);      
+               localStorage.setItem("imgURL", `${imgBox.src}`);
+               localStorage.getItem("imgURL");
+               }
+            
+            fileInput.addEventListener("change", upload);
+           profileImg.addEventListener("click",() =>  fileInput.click());
+           
+           
+         navigator.getBattery().then(function(e){
+             
+             console.log(e.dischargingTime/1000 + " " + e.level*100);
+         })
+         
+   function article(){
+       setTimeout(()=>{
+           document.querySelector("article").style.display = "block";
+           document.getElementById("load").style.display ="none";
+                     document.getElementById("roll").style.display ="none";
+       },5000);
+   }
+           //edit profile
+          let edit = document.querySelectorAll(".details").forEach((event)=>{
+             event.addEventListener("click", ()=>{
+                 if(event.firstElementChild.innerText == "Full Name"){
+                     document.getElementById("load").style.display ="block";
+                     document.getElementById("roll").style.display ="block";
+                     article();
+                     document.getElementById("submitFname").onclick = ()=>{
+             document.querySelector("article").style.display="none";
+             //document.querySelector('.load').style.display = "block";/*.classList.add("zIndex");*/
+              event.querySelector("h3").innerText = document.querySelector("#LFN").value;
+             //  document.getElementById("roll").style.display ="block";
+               console.log("xkgg");
+           }
+     
+                 }
+                 else if(event.firstElementChild.innerText == "Palmpay tag"){
+                     document.querySelector('#load').style.display ="block";
+                    document.querySelector(".edit-detail").style.display = 'block';
+                 }
+                 else{
+  /*section edit*/  
+  document.getElementById("what").innerText = "Edit" + " " +  (event.firstElementChild.innerText).toLowerCase();
+     /*loader*/ 
+      document.querySelector('#load').style.display ="block";
+    /*input placeholda*/ 
+     document.querySelector("input").placeholder = (event.firstElementChild.innerText).toLowerCase();
+     /*edit button*/
+      document.querySelector('.edit-details').style.display ="block";
+         }
+                        console.log(event.firstElementChild.innerText); 
+                console.log(event.lastElementChild.innerText);
+             
+   /*confirm button*/  
+   document.getElementById("confirm").onclick = ()=>{
+                    if(document.querySelector("input").value == ""){
+                        alert("null");
+                        document.getElementById("confirm").disabled = true;
+                        document.getElementById("confirm").disabled = false;
+                        
+                    }
+            
+                    else{
+                    
+                           localStorage.setItem(`${(event.firstElementChild.innerText).toLowerCase()}`,`${document.querySelector("input").value}`);
+               localStorage.getItem(`${(event.firstElementChild.innerText).toLowerCase()}`);
+                  
+                       event.querySelector("h3").innerText = document.querySelector("input").value;
+                   navigator.vibrate([300,100,300]);
+                       cloze();
+                       
+                    }
+                }
+                //palmpay tag close
+            
+   document.getElementById("confirmed").onclick = ()=>{
+                    if(document.querySelector("#edit-tag").value == ""){
+                        alert("null");
+                        document.getElementById("confirm").disabled = true;
+                        document.getElementById("confirm").disabled = false;
+                        
+                    }
+            
+                    else{
+                    
+                           localStorage.setItem(`${(event.firstElementChild.innerText).toLowerCase()}`,`${document.querySelector("input").value}`);
+               localStorage.getItem(`${(event.firstElementChild.innerText).toLowerCase()}`);
+                  
+                       event.querySelector("h3").innerText = document.querySelector("#edit-tag").value;
+                       cloze();
+                       
+                    }
+                }
+
+             })  
+             
+           })
+           //close confirm
+      function cloze(){
+          document.querySelector('#load').style.display ="none";
+          document.querySelector(".edit-detail").style.display = 'none';
+         document.querySelector(".edit-details").style.display = "none";
+         document.querySelector("article").style.display = 'none';
+         document.querySelector("input").value = "";
+     }
+           console.log("width: " + screen.width + "," + "height: " + screen.height+ "," + "Availheight: " + screen.availHeight + "," + "Availwidth: " + screen.availWidth+ "," + "left: " + screen.availLeft+ "," + "top: " + screen.availTop+ "," + "color: " + screen.colorDepth+ "," + "pixel: " + screen.pixelDepth);
+           document.getElementById('arw').onclick = ()=>{
+               history.back();
+           }
+           
+           //copy palmpay num
+           function copy(){
+         
+           }
+       </script>
+     </html>
